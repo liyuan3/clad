@@ -20,3 +20,7 @@ Runner outbound websocket /api/runner/ws with Authorization Bearer device_token.
 Runner uses argument arrays, no shell interpolation. One workspace per conversation, persistent; Claude session_id scoped to conversation. Stream JSON parsing, tool permissions explicit; never blanket bypass permissions. If approval cannot be handled in M1, fail clearly. Cancel entire owned process tree with bounded graceful period; validate Windows behavior separately. No user-supplied command lines.
 
 M1 single server process + SQLite. Multi-worker routing unsupported and documented. Artifacts uploaded by runner to POST /api/runner/runs/{id}/artifacts (multipart file), authenticated device bound to run; size cap and safe generated storage name.
+
+## Accepted H001a additions
+GET /api/health -> {status,version}, public liveness endpoint.
+GET /api/runner/device -> {id,name,status}, requires device Bearer credential; user tokens rejected.
